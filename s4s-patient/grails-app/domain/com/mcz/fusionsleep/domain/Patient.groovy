@@ -44,14 +44,14 @@ class Patient {
 	}
 	
 	static hibernateFilters = {
-		filterAllDeletedPatients(condition:'deleted=false', default:true)
+		enabledFilter(condition: 'deleted=0', default: true)
 	}
 	
 	def onLoad() {
-		medicalRecordNumber = String.format('MR%06d',id)
+		this.@medicalRecordNumber = String.format('MR%06d',id)
 	}
 	
-	def afterLoad() {
-		medicalRecordNumber = String.format('MR%06d',id)
-	}
+
+	
+
 }
