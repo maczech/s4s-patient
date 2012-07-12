@@ -40,7 +40,7 @@ body {
 	background: #ffffff;
 	color: #333333;
 	margin: 0 auto;
-	max-width: 960px;
+	max-width: 1500px;
 	overflow-x: hidden; /* prevents box-shadow causing a horizontal scrollbar in firefox when viewport < 960px wide */
 	   -moz-box-shadow: 0 0 0.3em #255b17;
 	-webkit-box-shadow: 0 0 0.3em #255b17;
@@ -232,6 +232,10 @@ fieldset,
 
 .fieldcontain .property-label {
 	float: left;
+}
+.fieldcontain p {
+	display: block;
+	margin-left: 25.5%;
 }
 
 .fieldcontain .property-value {
@@ -467,6 +471,14 @@ th.desc a {
 	background-image: url(../images/skin/sorted_desc.gif);
 }
 
+.red {
+	background: #f81d1e;
+}
+
+.green {
+	background: #83f2b6;
+}
+
 .odd {
 	background: #f7f7f7;
 }
@@ -475,7 +487,7 @@ th.desc a {
 	background: #ffffff;
 }
 
-th:hover, tr:hover {
+th:hover {
 	background: #E1F2B6;
 }
 

@@ -9,8 +9,18 @@ class CompilanceService {
     
 	def getCompilanceData(patientId){
 		def compilanceData = new CompilanceData()
-		compilanceData.compilancePercentage = calculateCompilancePercentage(patientId);
-		compilanceData.effortPercentage = calculateEffortPercentage(patientId);
+		try{
+			
+			compilanceData.compilancePercentage = calculateCompilancePercentage(patientId);
+		
+		}catch(IllegalStateException e){
+			compilanceData.compilancePercentage = null;
+		}
+		try{
+			compilanceData.effortPercentage = calculateEffortPercentage(patientId);
+		}catch(IllegalStateException e){
+			compilanceData.effortPercentage = null;
+		}
 		compilanceData.ahi = findLatestAHI(patientId)
 		
 		return compilanceData	
@@ -19,7 +29,7 @@ class CompilanceService {
 	def findLatestAHI(patientId){
 	
 			def criteria =  Compilance.createCriteria()
-//			def compilance =  Compilance.findByAhiIsNotNullAndId(patientId, [sort:'date',order:'desc']); 
+ 
 			def compilance = criteria.list{
 				isNotNull("ahi")
 				and{
@@ -105,15 +115,16 @@ class CompilanceService {
 		
 		return countCriteria.count{
 			not{
-				eq("excluded",true)
 				eq("status",Compilance.Status.PENDING)
 			}
 			and{
 				patient{
 					eq("id",patientId)
 				}
-				
-			};
+				eq("excluded",false)
+			}
+			
+			
 		}
 	}
 

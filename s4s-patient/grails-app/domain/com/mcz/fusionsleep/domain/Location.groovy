@@ -4,7 +4,9 @@ class Location {
 	String code
 	String name
 	
-
+	String toString(){
+		return name
+	}
     
 	static constraints = {
 		
