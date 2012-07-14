@@ -37,6 +37,18 @@ class BootStrap {
 		dateOfBirth : new Date() - (365*18))
 					.save(failOnError:true)
 					
+	(1..25).each{it->
+		 def p = new Patient(firstName:"Anna${it}",lastName:"Barut${it}",
+			gender:Patient.Gender.FEMALE,
+			status: Patient.Status.REFERRED,
+			location:location2,
+			dateOfBirth : new Date() - (365*it))
+						.save(failOnError:true)
+		(1..5).each {index->
+			new Compilance(patient: p, date:new Date()-index,excluded: false, ahi: index,status:Compilance.Status.COMPILANT).save(failOnError:true)
+		}
+	}
+					
 	 (1..5).each {it->
 	 	new Compilance(patient: patient1, date:new Date()-it,excluded: false, ahi: it,status:Compilance.Status.COMPILANT).save(failOnError:true)
 	 }

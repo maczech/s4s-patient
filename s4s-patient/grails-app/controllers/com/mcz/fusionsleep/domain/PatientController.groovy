@@ -17,17 +17,21 @@ class PatientController {
 		
 		def patients =  Patient.list(params)
 		
+		fillCompilanceData(patients)
+		
+        [patientInstanceList: patients, patientInstanceTotal: Patient.count()]
+    }
+
+	def fillCompilanceData(patients) {
 		patients.each{
 			try{
 				def compilanceData = compilanceService.getCompilanceData(it.id)
 				it.metaClass.compilance = compilanceData
 			}catch(IllegalStateException e){
 				it.errors.reject(e.getMessage())
-			}	
+			}
 		}
-		
-        [patientInstanceList: patients, patientInstanceTotal: Patient.count()]
-    }
+	}
 
     def create() {
         [patientInstance: new Patient(params)]
