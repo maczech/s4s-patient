@@ -13,12 +13,12 @@ class BootStrap {
 		
 		if (Environment.current == Environment.DEVELOPMENT) {
 			
-			
+			def location3 = new Location(name: 'Fusion Sleep 3'  ).save(failOnError:true)
 			(1..25).each{it->
 				def p = new Patient(firstName:"Anna${it}",lastName:"Barut${it}",
 				   gender:Patient.Gender.FEMALE,
 				   status: Patient.Status.REFERRED,
-				   location:location2,
+				   location:location3,
 				   dateOfBirth : new Date() - (365*it))
 							   .save(failOnError:true)
 			   (1..5).each {index->
