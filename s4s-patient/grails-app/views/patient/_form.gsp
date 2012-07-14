@@ -62,11 +62,4 @@
 	<g:datePicker name="dateOfBirth" precision="day"  value="${patientInstance?.dateOfBirth}" default="none" noSelection="['': '']" />
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'deleted', 'error')} ">
-	<label for="deleted">
-		<g:message code="patient.deleted.label" default="Deleted" />
-		
-	</label>
-	<g:checkBox name="deleted" value="${patientInstance?.deleted}" />
-</div>
 
