@@ -24,7 +24,7 @@
 					title="${message(code: 'patient.effort.label', default: 'Effort')}" />
 
 				<g:sortableColumn property="ahi"
-					title="${message(code: 'patient.status.label', default: 'AHI')}" />
+					title="${message(code: 'patient.ahi.label', default: 'AHI')}" />
 
 				<g:sortableColumn property="ahiDate"
 					title="${message(code: 'patient.date.label', default: 'Date')}" />
