@@ -46,7 +46,7 @@ class Patient {
 	}
 	
 	static hibernateFilters = {
-		enabledFilter(condition: 'deleted=0', default: true)
+		enabledFilter(condition: "deleted='false'", default: true)
 	}
 	
 	def onLoad() {
