@@ -1,4 +1,4 @@
-package com.mcz.fusionsleep.domain
+package com.mcz.fusionsleep.location
 
 class Location {
 	String code

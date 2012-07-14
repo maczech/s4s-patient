@@ -1,4 +1,4 @@
-package com.mcz.fusionsleep.domain
+package com.mcz.fusionsleep.patient
 
 import org.springframework.dao.DataIntegrityViolationException
 

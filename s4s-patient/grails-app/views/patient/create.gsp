@@ -1,4 +1,4 @@
-<%@ page import="com.mcz.fusionsleep.domain.Patient" %>
+<%@ page import="com.mcz.fusionsleep.patient.Patient" %>
 <!doctype html>
 <html>
 	<head>

@@ -1,8 +1,5 @@
-package com.mcz.fusionsleep.service
+package com.mcz.fusionsleep.compilance
 
-import com.mcz.fusionsleep.AHIData;
-import com.mcz.fusionsleep.CompilanceData;
-import com.mcz.fusionsleep.domain.Compilance;
 
 class CompilanceService {
 

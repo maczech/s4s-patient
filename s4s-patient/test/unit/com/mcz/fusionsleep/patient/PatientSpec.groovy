@@ -1,4 +1,6 @@
-package com.mcz.fusionsleep.domain
+package com.mcz.fusionsleep.patient
+
+import com.mcz.fusionsleep.location.Location;
 
 import grails.plugin.spock.UnitSpec;
 import grails.test.*

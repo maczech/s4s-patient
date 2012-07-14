@@ -1,10 +1,9 @@
-package com.mcz.fusionsleep.service
+package com.mcz.fusionsleep.compilance
 
 import static org.junit.Assert.*
 
-import com.mcz.fusionsleep.domain.Compilance;
-import com.mcz.fusionsleep.domain.Location;
-import com.mcz.fusionsleep.domain.Patient;
+import com.mcz.fusionsleep.location.Location;
+import com.mcz.fusionsleep.patient.Patient;
 
 import grails.plugin.spock.IntegrationSpec;
 import grails.plugin.spock.UnitSpec;

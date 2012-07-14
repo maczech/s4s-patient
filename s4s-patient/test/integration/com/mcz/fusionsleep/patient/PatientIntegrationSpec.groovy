@@ -1,6 +1,7 @@
-package com.mcz.fusionsleep.domain
+package com.mcz.fusionsleep.patient
 
 import grails.plugin.spock.IntegrationSpec;
+import com.mcz.fusionsleep.location.Location;
 
 class PatientIntegrationSpec extends IntegrationSpec {
 	

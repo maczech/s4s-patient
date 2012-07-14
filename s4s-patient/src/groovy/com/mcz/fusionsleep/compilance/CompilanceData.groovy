@@ -1,4 +1,4 @@
-package com.mcz.fusionsleep
+package com.mcz.fusionsleep.compilance
 
 class CompilanceData {
 	def compilancePercentage

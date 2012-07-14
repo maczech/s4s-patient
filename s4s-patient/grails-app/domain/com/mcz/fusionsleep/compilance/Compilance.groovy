@@ -1,4 +1,6 @@
-package com.mcz.fusionsleep.domain
+package com.mcz.fusionsleep.compilance
+
+import com.mcz.fusionsleep.patient.Patient;
 
 class Compilance {
 	Patient patient

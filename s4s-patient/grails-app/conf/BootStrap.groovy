@@ -1,8 +1,8 @@
 import grails.util.Environment;
 
-import com.mcz.fusionsleep.domain.Location
-import com.mcz.fusionsleep.domain.Patient;
-import com.mcz.fusionsleep.domain.Compilance;
+import com.mcz.fusionsleep.location.Location
+import com.mcz.fusionsleep.patient.Patient;
+import com.mcz.fusionsleep.compilance.Compilance;
 
 class BootStrap {
 

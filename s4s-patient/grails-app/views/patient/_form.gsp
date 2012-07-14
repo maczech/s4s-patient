@@ -1,4 +1,4 @@
-<%@ page import="com.mcz.fusionsleep.domain.Patient" %>
+<%@ page import="com.mcz.fusionsleep.patient.Patient" %>
 
 
 
@@ -31,9 +31,9 @@
 		<g:message code="patient.gender.label" default="Gender" />
 		<span class="required-indicator">*</span>
 	</label>
-<%--	<g:select name="gender" from="${com.mcz.fusionsleep.domain.Patient$Gender?.values()}" keys="${com.mcz.fusionsleep.domain.Patient$Gender.values()*.name()}" required="" value="${patientInstance?.gender?.name()}"/>--%>
+<%--	<g:select name="gender" from="${com.mcz.fusionsleep.patient.Patient$Gender?.values()}" keys="${com.mcz.fusionsleep.patient.Patient$Gender.values()*.name()}" required="" value="${patientInstance?.gender?.name()}"/>--%>
 		
-		<g:radioGroup name="gender" class="genderRadio" values="${com.mcz.fusionsleep.domain.Patient$Gender?.values()}" labels="${com.mcz.fusionsleep.domain.Patient$Gender?.values()}" value="${patientInstance?.gender?.name()}" >
+		<g:radioGroup name="gender" class="genderRadio" values="${com.mcz.fusionsleep.patient.Patient$Gender?.values()}" labels="${com.mcz.fusionsleep.patient.Patient$Gender?.values()}" value="${patientInstance?.gender?.name()}" >
 			<p>${it.radio} <g:message code=" ${it.label}" /> </p>
 		</g:radioGroup>
 </div>
@@ -43,7 +43,7 @@
 		<g:message code="patient.status.label" default="Status" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select name="status" from="${com.mcz.fusionsleep.domain.Patient$Status?.values()}" keys="${com.mcz.fusionsleep.domain.Patient$Status.values()*.name()}" required="" value="${patientInstance?.status?.name()}"/>
+	<g:select name="status" from="${com.mcz.fusionsleep.patient.Patient$Status?.values()}" keys="${com.mcz.fusionsleep.patient.Patient$Status.values()*.name()}" required="" value="${patientInstance?.status?.name()}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'location', 'error')} required">
@@ -51,7 +51,7 @@
 		<g:message code="patient.location.label" default="Location" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="location" name="location.id" from="${com.mcz.fusionsleep.domain.Location.list()}" optionKey="id" required="" value="${patientInstance?.location?.id}" class="many-to-one"/>
+	<g:select id="location" name="location.id" from="${com.mcz.fusionsleep.location.Location.list()}" optionKey="id" required="" value="${patientInstance?.location?.id}" class="many-to-one"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: patientInstance, field: 'dateOfBirth', 'error')} ">
