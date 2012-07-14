@@ -1,6 +1,8 @@
 package com.mcz.fusionsleep.patient
 
 import grails.plugin.spock.IntegrationSpec;
+
+import com.mcz.fusionsleep.compilance.Compilance;
 import com.mcz.fusionsleep.location.Location;
 
 class PatientIntegrationSpec extends IntegrationSpec {
@@ -9,7 +11,9 @@ class PatientIntegrationSpec extends IntegrationSpec {
 	def sessionFactory
 	
 	def setup() {
-		Patient.list()*.delete()
+		Compilance.list()*.delete(flush:true)
+		Patient.list()*.delete(flush:true)
+		Location.list()*.delete(flush:true)
 	}
 	
 	def "should medical record number be filled after load"() {
@@ -21,7 +25,7 @@ class PatientIntegrationSpec extends IntegrationSpec {
 					.save(failOnError:true,flush:true)
 		sessionFactory.currentSession.clear()
 		then:
-		assert Patient.findById(patient.id).medicalRecordNumber == "MR00000"+patient.id;
+		assert Patient.findById(patient.id).medicalRecordNumber == "MR0000"+patient.id;
 		
 		where:
 		firstName="Marcin"
@@ -37,9 +41,9 @@ class PatientIntegrationSpec extends IntegrationSpec {
 		def location = new Location(code:"1",name:"Test location 1").save(failOnError:true)
 		
 		def patient = new Patient(firstName:firstName,lastName:lastName,gender:gender,status: initialStatus,location:location)
-					.save(failOnError:true)
+					.save(failOnError:true,flush:true)
 		new Patient(firstName:firstName,lastName:lastName,gender:gender,status: treatmentStatus,location:location)
-					.save(failOnError:true)
+					.save(failOnError:true,flush:true)
 		
 		when:
 		patient.deleted = true

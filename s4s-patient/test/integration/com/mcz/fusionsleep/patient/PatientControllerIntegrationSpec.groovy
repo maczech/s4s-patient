@@ -2,6 +2,9 @@ package com.mcz.fusionsleep.patient
 
 import com.mcz.fusionsleep.location.Location;
 import com.mcz.fusionsleep.patient.Patient;
+import com.mcz.fusionsleep.compilance.Compilance;
+
+
 
 import grails.plugin.spock.IntegrationSpec;
 
@@ -14,7 +17,9 @@ class PatientControllerIntegrationSpec extends IntegrationSpec{
 		controller = new PatientController();
 		controller.compilanceService = compilanceService
 		
-		Patient.list()*.delete()
+		Compilance.list()*.delete(flush:true)
+		Patient.list()*.delete(flush:true)
+		Location.list()*.delete(flush:true)
 	}
 	
 	def "should fill compilance data when list"() {

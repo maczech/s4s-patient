@@ -17,11 +17,15 @@ class CompilanceServiceIntegrationSpec extends IntegrationSpec{
 	def compilanceService
 	
 	def setup() {
+
+		Compilance.list()*.delete(flush:true)
+		Patient.list()*.delete(flush:true)
+		Location.list()*.delete(flush:true)
 		
 		location = new Location(code:"1",name:"Test location 1").save(failOnError:true);
 		patient = new Patient(firstName:"Marcin",lastName:"Czech",gender:Patient.Gender.MALE,status: Patient.Status.INITIAL,location:location)
-				.save(failOnError:true)
-				
+				.save(failOnError:true,flush:true)
+	
 		compilanceService = new CompilanceService();
 	}
 	
@@ -69,12 +73,13 @@ class CompilanceServiceIntegrationSpec extends IntegrationSpec{
 	
 	def "should find latest ahi"(){
 		setup:
-			new Compilance(patient: patient,excluded: false, status: Compilance.Status.COMPILANT,date: new Date()).save(failOnError:true)
-			new Compilance(patient: patient,excluded: false, status: Compilance.Status.NON_COMPILANT,date: new Date(),ahi:5).save(failOnError:true)
-			new Compilance(patient: patient,excluded: false, status: Compilance.Status.NOT_USED,date: new Date()).save(failOnError:true)
-			new Compilance(patient: patient,excluded: false, status: Compilance.Status.PENDING,date: new Date(),ahi:10).save(failOnError:true)
+			new Compilance(patient: patient,excluded: false, status: Compilance.Status.COMPILANT,date: new Date()-4).save(failOnError:true)
+			new Compilance(patient: patient,excluded: false, status: Compilance.Status.NON_COMPILANT,date: new Date()-3,ahi:5).save(failOnError:true)
+			new Compilance(patient: patient,excluded: false, status: Compilance.Status.NOT_USED,date: new Date()-2).save(failOnError:true)
+			new Compilance(patient: patient,excluded: false, status: Compilance.Status.PENDING,date: new Date()-1,ahi:10).save(failOnError:true,flush:true)
 			
 		when:
+		def l = Compilance.list()
 		def ahiData = compilanceService.findLatestAHI(patient.id)
 		
 		then:

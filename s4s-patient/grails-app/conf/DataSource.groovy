@@ -1,10 +1,9 @@
 import  org.grails.plugin.hibernate.filter.HibernateFilterDomainConfiguration
 
 dataSource {
-    pooled = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""
+	pooled = true
+	driverClassName = "org.postgresql.Driver"
+	dialect = org.hibernate.dialect.PostgreSQLDialect
 	configClass = HibernateFilterDomainConfiguration.class
 }
 hibernate {
@@ -16,25 +15,30 @@ hibernate {
 environments {
     development {
         dataSource {
+			
+			pooled = true
+			driverClassName = "org.h2.Driver"
+			username = "sa"
+			password = ""
+			
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			configClass = HibernateFilterDomainConfiguration.class
         }
     }
     test {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-			configClass = HibernateFilterDomainConfiguration.class
+
+			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+			url = "jdbc:postgresql://localhost:5432/s4s-patient-test"
+			username = "postgres"
+			password = "postgres"
         }
     }
     production {
         dataSource {
-			pooled = true
-		    driverClassName = "org.postgresql.Driver"
-		    dialect = org.hibernate.dialect.PostgreSQLDialect
-			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			url = "jdbc:postgresql://localhost:5432/grails"
+			
+			dbCreate = "create" // one of 'create', 'create-drop','update'
+			url = "jdbc:postgresql://localhost:5432/s4s-patient"
 			username = "postgres"
 			password = "postgres"
         }
